@@ -1,56 +1,38 @@
-# AES-128 ECB — Análise e Descriptografia
+# Analisando o enunciado
 
-## Analisando o enunciado
+A questão nos fornece as seguintes informações
 
-A questão fornece as seguintes informações:
+* O algoritmo utilizado foi AES-128
+* O modo de operação foi ECB
+* A chave possui 16 caracteres
+* Chave: `cybersecurity!!!`
+* Conteudo Interceptado: `rpX3wOcHdoOHpWzRTPjVBdHx5oUPCZfC2w0hPkuLQOI=`
 
-* **Algoritmo utilizado:** AES-128
-* **Modo de operação:** ECB
-* **Tamanho da chave:** 16 caracteres
-* **Chave:** `cybersecurity!!!`
-* **Conteúdo interceptado:** `rpX3wOcHdoOHpWzRTPjVBdHx5oUPCZfC2w0hPkuLQOI=`
+note que o conteudo interceptado esta criptografado em Base64
 
-> **Observação:** o conteúdo interceptado está codificado em **Base64**.
+## Decodificando
 
----
-
-## Decodificando o conteúdo
-
-Primeiramente, utilizamos o site [dCode — Base64 Encoding](https://www.dcode.fr/base-64-encoding) para decodificar o conteúdo em Base64 para **Hexadecimal**.
-
-O resultado obtido foi:
+Utilizando o site [dCode — Base64 Encoding](https://www.dcode.fr/base-64-encoding), primeiramente decodificamos o código em Base64 para Hexadecimal, assim obtendo:
 
 ```text
-AE 95 F7 C0 E7 07 76 83 87 A5 6C D1 4C F8 D5 05
-D1 F1 E6 85 0F 09 97 C2 DB 0D 21 3E 4B 8B 40 E2
+AE 95 F7 C0 E7 07 76 83 87 A5 6C D1 4C F8 D5 05 D1 F1 E6 85 0F 09 97 C2 DB 0D 21 3E 4B 8B 40 E2
 ```
 
-Em seguida, utilizamos o [CyberChef](https://gchq.github.io/CyberChef/) para realizar a descriptografia utilizando **AES Decrypt**.
+Agora utilizando o site [CyberChef](https://gchq.github.io/CyberChef/), selecionamos a ferramenta AES Decrypt e preenchemos os dados.
 
-### Configuração do AES Decrypt
-
-| Campo              | Valor                                                                                             |
-| ------------------ | ------------------------------------------------------------------------------------------------- |
-| **Input**          | `AE 95 F7 C0 E7 07 76 83 87 A5 6C D1 4C F8 D5 05 D1 F1 E6 85 0F 09 97 C2 DB 0D 21 3E 4B 8B 40 E2` |
-| **Key**            | `cybersecurity!!!`                                                                                |
-| **Key Encoding**   | `LATIN1`                                                                                          |
-| **Mode**           | `ECB/NoPadding`                                                                                   |
-| **Input Encoding** | `Hex`                                                                                             |
-| **Output**         | `Raw`                                                                                             |
-| **IV from Input**  | `OFF`                                                                                             |
-
-O modo **ECB** não utiliza IV, por isso não é necessário fornecer um vetor de inicialização.
-
----
+```text
+Input (Texto): AE 95 F7 C0 E7 07 76 83 87 A5 6C D1 4C F8 D5 05 D1 F1 E6 85 0F 09 97 C2 DB 0D 21 3E 4B 8B 40 E2
+Key: cybersecurity!!! (LATIN1)
+Mode: ECB/NoPadding (pois não possuimos IV)
+Input: Hex
+Output: Raw
+IV from input: OFF
+```
 
 ## Resultado
 
-Após realizar a descriptografia, obtemos a seguinte **flag**:
+Por fim obtendo a Flag:
 
 ```text
 DUCK{AES_is_symmetric_crypto}
 ```
-
-### Flag
-
-> **DUCK{AES_is_symmetric_crypto}**
