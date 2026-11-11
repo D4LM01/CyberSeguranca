@@ -2,7 +2,7 @@
 
 O exercício fornece uma imagem chamada `cat.jpg`.
 
-![Imagem](Atividade3/imagens/cat.jpg)
+![Imagem](imagens/cat.jpg)
 
 Ao analisar os metadados da imagem utilizando o site [Aperi'Solve](https://aperisolve.fr/), encontramos um texto suspeito na aba **License**:
 
