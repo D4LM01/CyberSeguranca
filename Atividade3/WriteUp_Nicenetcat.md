@@ -44,7 +44,7 @@ Ao executar o programa no shell utilizando o comando `nc xebec.cylabacademy.net 
 10
 ```
 
-Em seguida, convertemos os valores de **Decimal para ASCII**, obtendo a seguinte flag:
+Em seguida, convertemos os valores de **Decimal para ASCII** utilizando o site [Dcode][https://www.dcode.fr/ascii-code], obtendo a seguinte flag:
 
 ```text
 academy{g00d_k1tty!_n1c3_k1tty!_7ef52}
